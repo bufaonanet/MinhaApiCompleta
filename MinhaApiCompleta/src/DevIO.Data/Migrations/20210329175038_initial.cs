@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DevIO.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,7 +44,7 @@ namespace DevIO.Data.Migrations
                         column: x => x.FornecedorId,
                         principalTable: "Fornecedores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,13 +52,13 @@ namespace DevIO.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    FornecedorId = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: false),
                     Descricao = table.Column<string>(type: "varchar(1000)", nullable: false),
                     Imagem = table.Column<string>(type: "varchar(100)", nullable: false),
                     Valor = table.Column<decimal>(nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
-                    Ativo = table.Column<bool>(nullable: false)
+                    Ativo = table.Column<bool>(nullable: false),
+                    FornecedorId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {

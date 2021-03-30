@@ -20,12 +20,15 @@ namespace DevIO.Data.Context.Mappings
 
             // 1:1 => Fornecedor : Endereço 
             builder.HasOne(f => f.Endereco)
-                .WithOne(e => e.Fornecedor);
+                .WithOne(e => e.Fornecedor)
+                .OnDelete(DeleteBehavior.Cascade);
+                
 
             // 1:N => Fornecedor : Produtos
             builder.HasMany(f => f.Produtos)
                 .WithOne(p => p.Fornecedor)
-                .HasForeignKey(p => p.FornecedorId);
+                .HasForeignKey(p => p.FornecedorId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable("Fornecedores");
         }

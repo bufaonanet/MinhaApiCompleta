@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
+    <Compile Remove="Migrations\20210329173917_inital.cs" />
+    <Compile Remove="Migrations\20210329173917_inital.Designer.cs" />
+    <Compile Remove="Migrations\20210329174347_initial.cs" />
+    <Compile Remove="Migrations\20210329174347_initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

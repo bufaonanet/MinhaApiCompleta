@@ -130,6 +130,7 @@ namespace DevIO.Data.Migrations
                     b.HasOne("DevIO.Business.Models.Fornecedor", "Fornecedor")
                         .WithOne("Endereco")
                         .HasForeignKey("DevIO.Business.Models.Endereco", "FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -138,6 +139,7 @@ namespace DevIO.Data.Migrations
                     b.HasOne("DevIO.Business.Models.Fornecedor", "Fornecedor")
                         .WithMany("Produtos")
                         .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
