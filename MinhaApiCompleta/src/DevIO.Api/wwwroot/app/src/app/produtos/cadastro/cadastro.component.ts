@@ -43,7 +43,7 @@ export class CadastroComponent implements OnInit {
       descricao: '',
       imagemUpload: '',
       imagem: '',
-      valor: '0',
+      valor: 0,
       ativo: new FormControl(false),
       nomeFornecedor: ''
     });
@@ -53,7 +53,7 @@ export class CadastroComponent implements OnInit {
     if (this.produtoForm.valid && this.produtoForm.dirty) {
 
       let produtoForm = Object.assign({}, this.produto, this.produtoForm.value);
-      produtoForm.ativo = this.produtoForm.get('ativo').value
+      produtoForm.ativo = this.produtoForm.get('ativo').value;
 
       this.produtoHandle(produtoForm)
         .subscribe(
@@ -88,6 +88,8 @@ export class CadastroComponent implements OnInit {
     produto.imagemUpload = this.imageBase64;
     produto.imagem = this.imagemNome;
 
+    produto.valor = this.StringParaDecimal(produto.valor);
+
     return this.produtoService.registrarProduto(produto);
   }
 
@@ -106,6 +108,14 @@ export class CadastroComponent implements OnInit {
     var binaryString = readerEvt.target.result;
     this.imageBase64 = btoa(binaryString);
   } 
+
+  StringParaDecimal(input): any {
+    if (input === null) return 0;
+
+    input = input.replace(/\./g, '');
+    input = input.replace(/,/g, '.');
+    return parseFloat(input);
+  }
 }
 
 

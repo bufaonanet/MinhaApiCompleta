@@ -30,6 +30,7 @@ export class ProdutoService extends BaseService {
 
     registrarProduto(produto: Produto): Observable<Produto> {
 
+        produto.valor 
         return this.http
             .post(this.UrlServiceV1 + 'produtos', produto, super.ObterAuthHeaderJson())
             .pipe(
@@ -45,4 +46,7 @@ export class ProdutoService extends BaseService {
                 catchError(super.serviceError)
             );
     }
+
+    
+
 }

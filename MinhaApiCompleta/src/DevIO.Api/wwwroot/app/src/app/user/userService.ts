@@ -15,7 +15,7 @@ export class UserService extends BaseService {
     login(user: User): Observable<User> {
 
         return this.http
-            .post(this.UrlServiceV1 + 'entrar', user, super.ObterHeaderJson())
+            .post(this.UrlServiceV1 + 'login', user, super.ObterHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError)
@@ -23,7 +23,7 @@ export class UserService extends BaseService {
     }
 
     persistirUserApp(response: any){
-        localStorage.setItem('app.token', response.accessToken);
+        localStorage.setItem('app.token', response.acessToken);
         localStorage.setItem('app.user', JSON.stringify(response.userToken));
     }
 }
